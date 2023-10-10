@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const ArrayPuah = () => {
   const [PushItems, setPushItems] = useState(["item 1", "item 2", "item 3"]);
+  const [PushItems2, setPushItems2] = useState(["item 1", "item 2", "item 3"]);
   const [value, setValue] = useState("add anything");
   const handleAddItem = () => {
     setPushItems([...PushItems, value]);
@@ -17,7 +18,7 @@ const ArrayPuah = () => {
   return (
     <div className="item">
       <ul>
-        {PushItems.map((index) => (
+        {[0,1,2,3].map((index) => (
           <li key={index}>{index}</li>
         ))}
       </ul>

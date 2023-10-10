@@ -17,8 +17,18 @@ const MyComponent = () => {
       setState(newArr);
     }
   }
+  function myFn() {
+    const a = document.getElementById('root');
+    // a.style.backgroundColor = 'red'
+    a.innerHTML = `<button onClick={() => console.log('abc')}>button</button>`
+    
+  }
+  function returnHtml(){
+    return (<button onClick={myFn}>go back to page</button>)
+  }
   return (
     <div>
+      <button onClick={myFn}>click me</button>
       <button onClick={() => addItem()} className="btn">
         add item
       </button>
