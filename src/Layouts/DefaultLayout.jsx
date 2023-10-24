@@ -7,7 +7,7 @@ const DefaultLayout = () => {
   return (
     <>
     <Header />
-    <div className="min-h-screen">
+    <div className="min-h-[calc(100vh-82px)] grid place-items-center">
     <Outlet/>
     </div>
     <Footer />

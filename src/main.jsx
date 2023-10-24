@@ -8,10 +8,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import DefaultLayout from "./Layouts/DefaultLayout.jsx";
-import GitHub, {
-  gitHubInfoLoader,
-} from "./components/HomeComponents/GitHub";
-
+import GitHub from "./components/HomeComponents/GitHub";
+import TestPage from "./pages/Playing";
+import UseEffectHook from "./components/LayoutComponents/UseEffectHook";
+import SlideToUnlock from "./components/SlideToUnlock";
+import TestingProps from "./components/Props";
+import NumberInput from "./components/NumberInput";
 // const router = createBrowserRouter([
 // {
 //   path: "/",
@@ -31,12 +33,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<DefaultLayout />}>
       <Route path="home" element={<div>home page</div>}></Route>,
-      <Route
-        path="/github"
-        loader={gitHubInfoLoader}
-        element={<GitHub />}
-      ></Route>
-      ,<Route path="Playing" element={<div>about page</div>}></Route>
+      <Route path="github" element={<GitHub />}></Route>,
+      <Route path="Play" element={<TestPage />}></Route>,
+      <Route path="useeffect" element={<UseEffectHook />}></Route>
+      <Route path="slide-to-unlock" element={<SlideToUnlock />}></Route>
+      <Route path="testing-props" element={<TestingProps />}></Route>
+      <Route path="number-input" element={<NumberInput />}></Route>
     </Route>
   )
 );
@@ -44,6 +46,5 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    {/* <App /> */}
   </React.StrictMode>
 );

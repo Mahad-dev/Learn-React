@@ -2,7 +2,7 @@ import React from "react";
 import { useMemo } from "react";
 import { useState } from "react";
 import SwitchComponent from "../components/SwitchComponent";
-import ListComponent from "./../components/ListComponent";
+import ListComponent from "../components/ListComponent";
 const items = [
   {
     label: 1,
@@ -62,21 +62,26 @@ const TestPage = () => {
     const newArr = leftItems.filter((item) => !item.checked);
     setLeftItems(newArr);
   }
-  const disabledRight = useMemo(() => {
-    return rightItems.length > 0 && rightItems.some(item => item.checked) ? false : true;
-  }, [rightItems]);
-  const disabledLeft = useMemo(() => {
-    return leftItems.length > 0 && leftItems.some(item => item.checked) ? false : true;
-  }, [leftItems]);
+  const [disabledRight, disabledLeft] = useMemo(() => {
+    const isRightDisabled =
+      rightItems.length === 0 || !rightItems.some((item) => item.checked);
+    const isLeftDisabled =
+      leftItems.length === 0 || !leftItems.some((item) => item.checked);
+
+    return [isRightDisabled, isLeftDisabled];
+  }, [rightItems, leftItems]);
+
   return (
-    <div className="flex gap-3">
-      <ListComponent check={check} items={rightItems} />
-      <SwitchComponent
-        disabled={{disabledRight , disabledLeft}}
-        moveRight={moveRight}
-        moveLeft={moveLeft}
-      />
-      <ListComponent check={check} items={leftItems} />
+    <div className="mx-auto">
+      <div className="flex gap-3">
+        <ListComponent check={check} items={rightItems} />
+        <SwitchComponent
+          disabled={{ disabledRight, disabledLeft }}
+          moveRight={moveRight}
+          moveLeft={moveLeft}
+        />
+        <ListComponent check={check} items={leftItems} />
+      </div>
     </div>
   );
 };

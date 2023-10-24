@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink as Link } from "react-router-dom";
+import Dropdown from "../Dropdown";
 const Header = () => {
   return (
     <header className="border border-b py-3">
@@ -77,9 +78,9 @@ const Header = () => {
           stroke="currentColor"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M4 6h16M4 12h16M4 18h16"
           />
         </svg>
@@ -115,15 +116,21 @@ const Header = () => {
               </Link>
             </li>
             <li>
-              <a className="md:p-4 py-2 block hover:text-purple-400" href="#">
-                Customers
-              </a>
+              <Link
+                to="play"
+                className={({isActive}) =>
+                  `${isActive && 'text-purple-950'} md:p-4 py-2 block hover:text-purple-400"`
+                }
+              >
+                Play
+              </Link>
             </li>
             <li>
-              <a className="md:p-4 py-2 block hover:text-purple-400" href="#">
-                Blog
-              </a>
+              <Link to='useeffect' className="md:p-4 py-2 block hover:text-purple-400" href="#">
+              Use effect
+              </Link>
             </li>
+           
             <li>
               <a
                 className="md:p-4 py-2 block hover:text-purple-400 text-purple-500"
@@ -131,6 +138,9 @@ const Header = () => {
               >
                 Sign Up
               </a>
+            </li>
+            <li>
+             <Dropdown />
             </li>
           </ul>
         </div>
